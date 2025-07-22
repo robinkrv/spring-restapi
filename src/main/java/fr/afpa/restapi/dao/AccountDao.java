@@ -29,7 +29,7 @@ public interface AccountDao {
 
     /**
      * Suppression d'un compte
-     * @param account
+     * @param id
      */
-    void delete(Account account);
+    void deleteById(Long id);
 }

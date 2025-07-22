@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import fr.afpa.restapi.dao.AccountDao;
 
 import fr.afpa.restapi.model.Account;
+import org.springframework.stereotype.Repository;
 
 /**
  * Une implémentation de {@link AccountDao} basée sur un {@link java.util.HashMap} 
@@ -18,6 +20,7 @@ import fr.afpa.restapi.model.Account;
  * TODO annoter cette classe de façon à en faire un "bean". Quelle est l'annotation à utiliser dans ce cas de figure ?
  * Pour vous aider, lisez l'article suivant -> https://www.axopen.com/blog/2019/02/java-spring-les-beans/
  */
+@Repository
 public class InMemoryAccountDao implements AccountDao {
     /**
      * Table de hachage permettant de stocker les objets de {@link Account}
@@ -45,8 +48,8 @@ public class InMemoryAccountDao implements AccountDao {
     }
 
     @Override
-    public void delete(Account account) {
-        accountMap.remove(account.getId());
+    public void deleteById(Long id) {
+        accountMap.remove(id);
     }
 
     public void clear() {
